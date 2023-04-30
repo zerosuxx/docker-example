@@ -43,3 +43,8 @@ jobs:
             --tag ${{ env.IMAGE_NAME }}:$VERSION \
             --tag ${{ env.IMAGE_NAME }}:latest \
             .
+      - name: Update Docker Hub description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ env.DOCKERHUB_PASSWORD }}
