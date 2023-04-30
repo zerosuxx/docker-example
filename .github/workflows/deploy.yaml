@@ -36,13 +36,13 @@ jobs:
           export VERSION=$(git describe --tags 2>/dev/null || echo '0.1.0')
           echo $VERSION
           docker buildx build \
+            . \
             --build-arg BUILDKIT_INLINE_CACHE=1 \
             --cache-from ${{ env.IMAGE_NAME }}:latest \
             --platform ${{ env.PLATFORMS }} \
             --push \
             --tag ${{ env.IMAGE_NAME }}:$VERSION \
-            --tag ${{ env.IMAGE_NAME }}:latest \
-            .
+            --tag ${{ env.IMAGE_NAME }}:latest
       - name: Update Docker Hub description
         uses: peter-evans/dockerhub-description@v3
         with:
