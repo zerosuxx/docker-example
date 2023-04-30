@@ -47,4 +47,4 @@ jobs:
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
-          password: ${{ env.DOCKERHUB_PASSWORD }}
+          password: ${{ env.DOCKERHUB_TOKEN }}
